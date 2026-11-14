@@ -1,0 +1,11 @@
+# BSDE UPward 10 📱💻
+**Mobile Code Editor by Elyas, Age 10**
+
+An offline code editor built with pure HTML, CSS, and JavaScript.  
+Created so you can code anywhere, even without internet and using just your phone.
+
+### ✨ Features
+- **Live Preview** - See your code render instantly in the iframe as you type
+- **3-in-1 Editor** - Separate panels for HTML, CSS, and JavaScript
+- **Mobile Responsive** - Built with `vh` and `vw` units. Works on phone and tablet
+- **Download Project** - Save your entire code as
