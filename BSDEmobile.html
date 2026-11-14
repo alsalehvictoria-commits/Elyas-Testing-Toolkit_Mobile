@@ -1,0 +1,196 @@
+<head>
+<title>BSDE UPward 10- Mobile</title>
+</head>
+<body spellcheck="false">
+
+<textarea
+id='HTMLbox'
+placeholder="HTML"
+></textarea>
+<br>
+
+<textarea
+id='JSbox'
+placeholder="JavaScript"
+></textarea>
+<br>
+
+<textarea
+id='CSSbox'
+placeholder="ComputingStyleSystem"
+></textarea>
+
+<iframe
+id='frameBox'
+allowFullscreen
+sandbox='allow-scripts allow-forms'
+srcdoc=""
+></iframe>
+
+<details>
+<summary>Settings</summary>
+<button id="FS">Fullscreen</button><br>
+<button id='EH'>Enter HTML</button><br>
+<button id='EJ'>Enter JS</button><br>
+<button id='EC'>Enter CSS</button><br>
+<input  id='RF' placeholder="rename file"><br>
+<button id='DL'><a id='HF' href="" download='BSDE_file.html'>Download</a></button>
+</details>
+
+<textarea
+id='noteBox'
+placeholder="Type '/Show/' to insert all your code here"
+></textarea>
+
+<textarea
+id='errBox'
+placeholder="Error box"
+readonly
+></textarea>
+
+</body><script>//Function 3 boxes to iframe
+[HTMLbox,JSbox,CSSbox].forEach(Fn=>{
+Fn.onkeyup=()=>{
+let box=
+`<body>${HTMLbox.value}<\/body>
+<script>${JSbox.value}<\/script>
+<style>${CSSbox.value}<\/style>`;
+frameBox.srcdoc=box;
+           };
+})
+
+//last 2 boxes for own function
+noteBox.oninput=(e)=>{
+if(noteBox.value==="/show/"){
+noteBox.value=frameBox.srcdoc
+ };
+}
+
+//--//errbox
+window.onerror=(rr)=>{
+errBox.value=rr
+}
+
+//setting buttons
+FS.onclick=()=>{
+frameBox.requestFullscreen()
+};
+
+EH.onclick=()=>{
+HTMLbox.requestFullscreen()
+};
+
+EJ.onclick=()=>{
+JSbox.requestFullscreen()
+};
+
+EC.onclick=()=>{
+CSSbox.requestFullscreen()
+};
+
+RF.oninput=()=>{
+HF.download=RF.value
+};
+
+[DL,HF].forEach(em=>{
+em.onclick=()=>{
+let blobs = new Blob([frameBox.srcdoc],{type:"text/html"});
+
+let url = URL.createObjectURL(blobs)
+HF.href=url;
+HF.click()
+  }
+})</script><style>*:not(body,head,summary,a,details input,details button,title,script,style,iframe){
+box-shadow:0.5vw 0.5vw 1vw 0.3vw;
+padding:4px
+}
+
+body{
+position:absolute;
+background-color:#00806A;
+margin:0px;
+animation: 4s intro;
+}
+
+@keyframes intro{
+
+0%{
+background-color:white;
+left:150vw;
+opacity:0
+}
+
+100%{
+left:0vw;
+transform:scale(1)
+opacity:1
+}
+
+ }
+
+#HTMLbox,#JSbox,#CSSbox{
+position:relative;
+height:30vh;
+left:0px;
+font-family:consolas;
+font-size:1.5vh;
+width:20vw;
+border:0.1vh black solid;
+resize:none;
+margin:-2px;
+background-color:#00ccbb
+}
+
+#frameBox{
+position:absolute;
+top:0px;
+background-color:white;
+height:60vh;
+width:49vw;
+border:0.1vh black solid;
+}
+
+#noteBox,#errBox{
+position:relative;
+height:30vh;
+font-family:consolas;
+font-size:1.5vh;
+width:25vw;
+border:0.1vh black solid;
+resize:none;
+margin:-2px;
+background-color:#00ccbb;
+outline:none;
+}
+
+details{
+position:absolute;
+top:0px;
+left:72vw;
+background-color:#00ddff;
+margin:6px;
+width:15vw;
+border:0.1vh black solid;
+padding:3px;
+font-size:1.5vw
+}
+
+button{
+border:0.1vh black solid;
+border-radius:0.4vw;
+font-size:0.9vw;
+color:darkblue;
+background-color:#00ffff
+}
+
+details input{
+width:13vw;
+background-color:#00ffff;
+color:blue;
+outline:none;
+border:0.1vw black solid
+}
+#HF{
+pointer-events:none
+}
+</style>
